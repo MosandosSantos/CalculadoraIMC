@@ -3,7 +3,7 @@ import './ImcTable.css';
 import { data } from '../data/data';
 import Button from './Button.jsx';
 
-const ImcTable = ({ data, imc, info, infoClass }) => {
+const ImcTable = ({ data, imc, info, infoClass, resetCalc }) => {
   const imcValue = parseFloat(imc);
 
   const currentInfo = data.find((item) => imcValue >= item.min && imcValue <= item.max);
@@ -27,7 +27,7 @@ const ImcTable = ({ data, imc, info, infoClass }) => {
           </div>
         ))}
       </div>
-      <Button id="back-btn" text="Voltar" />
+      <Button id="back-btn" text="Voltar" action={resetCalc} />
     </div>
   );
 };

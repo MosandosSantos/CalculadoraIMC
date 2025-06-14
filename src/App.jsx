@@ -2,7 +2,7 @@ import { useState } from "react";
 import './App.css';
 import IMC from "./components/IMC";
 import ImcTable from "./components/ImcTable";
-import { data } from "./data/data"; // CORREÇÃO AQUI
+import { data } from "./data/data";
 
 function App() {
   const [imc, setImc] = useState("");
@@ -28,12 +28,24 @@ function App() {
     });
   };
 
+  const resetCalc = () => {
+    setImc("");
+    setInfo("");
+    setInfoClass("");
+  };
+
   return (
     <div className="container">
       {!imc ? (
         <IMC calcImc={calcImc} />
       ) : (
-        <ImcTable data={data} imc={imc} info={info} infoClass={infoClass} />
+        <ImcTable
+          data={data}
+          imc={imc}
+          info={info}
+          infoClass={infoClass}
+          resetCalc={resetCalc}
+        />
       )}
     </div>
   );
